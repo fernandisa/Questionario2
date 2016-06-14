@@ -29,7 +29,7 @@
             <div class="direita">
                 <a href="disciplina-cadastrar.jsp">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                        <i class="material-icons">Cadastar</i>
+                        <i class="material-icons">add</i>
                     </button>  
                 </a>
             </div>
