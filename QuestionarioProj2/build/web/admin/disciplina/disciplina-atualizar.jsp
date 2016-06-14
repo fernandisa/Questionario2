@@ -1,3 +1,5 @@
+<%@page import="dao.MonitorDAO"%>
+<%@page import="dao.ProfessorDAO"%>
 <%@page import="modelo.Professor"%>
 <%@page import="modelo.Monitor"%>
 <%@page import="java.util.List"%>
@@ -31,77 +33,120 @@
     List<Professor> pList = pDAO.listar();
 
     // intregrar com o monitorDAO q ainda n foi criado
-    MonitorDAO pDAO = new  MonitorDAO();
+    MonitorDAO mDAO = new  MonitorDAO();
     List<Monitor> mList = mDAO.listar();
    
 
 %>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__supporting-text">
+            <h4>Disciplina - Cadastrar</h4>
+            <form action="disciplina-cadastrar-ok.jsp" method="post">
+                <!-- 
+                    primeira div -- área que ocupará o campo de formulário
+                    segunda div -- campo de texto e label 
+                -->
+                <div class="mdl-cell--12-col"> 
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" required  name="txtIdDisciplina" value="<%=obj.getIdDisciplina()%>" /><br />
+                        <label class="mdl-textfield__label" for="txtIdDisciplina">Código</label>
+                    </div>
+                </div>
+                
+                <div class="mdl-cell--12-col"> 
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" required  name="txtDiscNome" value="<%=obj.getDiscNome()%>" /><br />
+                        <label class="mdl-textfield__label" for="txtDiscNome">Nome</label>
+                    </div>
+                </div>
+                
+                <div class="mdl-cell--12-col"> 
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" required  name="txtArea" value="<%=obj.getArea()%>" /><br />
+                        <label class="mdl-textfield__label" for="txtArea">Área</label>
+                    </div>
+                </div>
+                
+                <div class="mdl-cell--12-col">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="selcurso" name="selcurso" value="<%=obj.getIdCurso()%>">
+                        <option value="">Selecione a resposta</option>
+                            <%                         
+                               String selected = "";    
+                               for (Curso item : cList) {
+                               if(item.getNome()== obj.getIdCurso().getNome())
+                               {
+                               selected = "selected";
+                               }
+                            %>
+                        <option value="<%=item.getNome()%>" <%=selected%>><%=item%></option>
+                            <%
+                            selected = "";
+                             }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                        
+                <div class="mdl-cell--12-col">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="selprofessor" name="selprofessor" value="<%=obj.getIdProfessor()%>">
+                        <option value="">Selecione a resposta</option>
+                            <%                         
+                               String selecte = "";    
+                               for (Professor item : pList) {
+                               if(item.getProfNome()== obj.getIdProfessor().getProfNome())
+                               {
+                               selecte = "selecte";
+                               }
+                            %>
+                        <option value="<%=item.getProfNome()%>" <%=selecte%>><%=item%></option>
+                            <%
+                            selecte = "";
+                             }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                        
+                <div class="mdl-cell--12-col">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="selmonitor" name="selmonitor" value="<%=obj.getIdMonitor()%>">
+                        <option value="">Selecione a resposta</option>
+                            <%                         
+                               String select = "";    
+                               for (Monitor item : mList) {
+                               if(item.getMonNome()== obj.getIdMonitor().getMonNome())
+                               {
+                               select = "select";
+                               }
+                            %>
+                        <option value="<%=item.getMonNome()%>" <%=select%>><%=item%></option>
+                            <%
+                            select = "";
+                             }
+                            %>
+                        </select>
+                    </div>
+                </div>
 
-<div>
-    <h1 class="centro">Atualização de Disciplinas</h1>
-    <form action="disciplina-atualizar-ok.jsp" method="post">
-        <label>Código:</label><input type="text" name="txtIdDisciplina" value="<%=obj.getIdDisciplina()%>" /><br />
-        <label>Nome:</label><input type="text" name="txtDiscNome" value="<%=obj.getDiscNome()%>" /><br />
-        <label>Area:</label><input type="text" name="txtArea" value="<%=obj.getArea()%>" /><br />
-        <label>Curso</label>
-        <select name="selcurso">
-            <option value="">Selecione</option>
-            <%
-                String selected = "";
-                //percorrer minha lista de cursos
-                for (Curso c : cList) {
-                    if(c.getIdCurso()== obj.getIdCurso().getIdCurso())
-                    {
-                        selected = "selected";
-                    }
-            %>
-            <option value="<%=c.getIdCurso()%>" <%=selected%> <%=c%></option>
-            <%
-                selected = "";
-                }
-            %>
-        </select><br />
-        <label>Professor</label>
-        <select name="selprofessor">
-            <option value="">Selecione</option>
-            <%
-                String selecte = "";
-                //percorrer minha lista de profs
-                for (Professor p : pList) { // fazer dao prof
-                    if(p.getIdProfessor()== obj.getIdProfessor().getIdProfessor())
-                    {
-                        selecte = "selecte";
-                    }
-            %>
-            <option value="<%=p.getIdProfessor()%>" <%=selecte%> <%=p%></option>
-            <%
-                selecte = "";
-                }
-            %>
-        </select><br />
-        <label>Monitor</label>
-        <select name="selmonitor">
-        <option value="">Selecione</option>
-        <%
-            String select = "";
-            //percorrer minha lista de profs
-            for (Monitor m : mList) {
-                if(m.getIdMonitor()== obj.getIdMonitor().getIdMonitor())
-                {
-                    select = "select";
-                }
-        %>
-        <option value="<%=m.getIdMonitor()%>" <%=select%> <%=m%> </option>
-        <%
-            select = "";
-            }
-        %>
-        </select><br />
-        
-        <input type="reset" value="Limpar" />
-        <input type="submit" value="Atualizar" />
-    </form>
-    
-</div>
+                <div class="mdl-cell--12-col">
+                    
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                    <i class="material-icons">save</i></button>
+                    <button type="reset" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+                    <i class="material-icons">clear</i></button>
+                    
+                    
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<%@include file="../rodape.jsp"%>
 
 
