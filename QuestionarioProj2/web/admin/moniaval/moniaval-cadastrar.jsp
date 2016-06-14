@@ -1,3 +1,5 @@
+<%@page import="modelo.Questionario"%>
+<%@page import="dao.QuestionarioDAO"%>
 <%@page import="modelo.Monitor"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.MonitorDAO"%>
@@ -23,13 +25,15 @@
     }
     
     MonitorDAO mdao = new MonitorDAO();
-    List<Monitor> lista = mdao.listar();
+    List<Monitor> mlista = mdao.listar();
 
+    QuestionarioDAO qdao = new QuestionarioDAO();
+    List<Questionario> qlista = qdao.listar();
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
-            <h4>Monitor - Cadastrar</h4>
+            <h4>Avaliação de Monitores - Cadastrar</h4>
             <form action="moniaval-cadastrar-ok.jsp" method="post">
                 <!-- 
                     primeira div -- área que ocupará o campo de formulário
@@ -46,11 +50,11 @@
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selProfessor" name="selMonitor" value="<%=obj.getIdMonitor()%>">
+                        <select class="mdl-select__input" id="selMonitor" name="selMonitor" value="<%=obj.getIdMonitor()%>">
                         <option value="">Selecione a resposta</option>
                             <%                         
                                String selected = "";    
-                               for (Monitor item : lista) {
+                               for (Monitor item : mlista) {
                                if(item.getMonNome()== obj.getIdMonitor().getMonNome())
                                {
                                selected = "selected";
@@ -64,21 +68,35 @@
                         </select>
                     </div>
                 </div>
-                
-                <div class="mdl-cell--12-col"> 
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtIdQuestionario" />
-                        <label class="mdl-textfield__label" for="txtIdQuestionario">Código do questionário</label>
+                        
+                <div class="mdl-cell--12-col">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="selQuestionario" name="selQuestionario" value="<%=obj.getIdQuestionario()%>">
+                        <option value="">Selecione a resposta</option>
+                            <%                         
+                               String selecte = "";    
+                               for (Questionario item : qlista) {
+                               if(item.getIdQuestionario()== obj.getIdQuestionario().getIdQuestionario())
+                               {
+                               selecte = "selecte";
+                               }
+                            %>
+                        <option value="<%=item.getIdQuestionario()%>" <%=selecte%>><%=item%></option>
+                            <%
+                            selecte = "";
+                             }
+                            %>
+                        </select>
                     </div>
                 </div>
-                
+                        
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtmaPeriodo" />
-                        <label class="mdl-textfield__label" for="txtmaPeriodo">Período</label>
+                        <input class="mdl-textfield__input" type="text" required  name="txtMaPeriodo" />
+                        <label class="mdl-textfield__label" for="txtMaPeriodo">Período da Avaliação</label>
                     </div>
                 </div>
-
+       
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtMaResposta1" />

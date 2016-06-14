@@ -24,7 +24,7 @@
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
-            <h4>Disciplina</h4>
+            <h4>Disciplinas</h4>
             <!-- Colored mini FAB button -->
             <div class="direita">
                 <a href="disciplina-cadastar.jsp">
@@ -41,6 +41,7 @@
                         <th>Nome</th>
                         <th>Curso</th>
                         <th>Professor</th>
+                        <th>Monitor></th>
                         <th>Ações</th>
                     </tr>
                 </thead>

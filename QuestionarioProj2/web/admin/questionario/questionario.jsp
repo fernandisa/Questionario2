@@ -60,8 +60,8 @@
                             <td><%=obj.getPergunta9()%></td>
                             <td><%=obj.getPergunta10()%></td>
                             
-                            <td><a href="questionario-atualizar.jsp?codigo=<%=obj.getIdQuestionario()%>">Editar</a>
-                                <a href="questionario-excluir-ok.jsp?codigo=<%=obj.getIdQuestionario()%>">Excluir</a>
+                            <td><a href="questionario-atualizar.jsp?IdQuestionario=<%=obj.getIdQuestionario()%>">Editar</a>
+                                <a href="questionario-excluir-ok.jsp?IdQuestionario=<%=obj.getIdQuestionario()%>">Excluir</a>
                             </td>
                         </tr>
                         <%
