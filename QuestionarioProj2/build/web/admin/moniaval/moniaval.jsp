@@ -37,7 +37,7 @@
             <table class="mdl-data-table mdl-js-data-table">
                 <thead>
                     <tr>
-                        <th>Codigo</th>
+                        <th>Codigo da avaliação do monitor</th>
                         <th>Código do monitor</th>
                         <th>Código do questionário</th>
                         <th>Período do monitor</th>

@@ -75,6 +75,8 @@
                              }
                             %>
                         </select>
+                    </div>
+                </div>
 
                 <div class="mdl-cell--12-col">
                     

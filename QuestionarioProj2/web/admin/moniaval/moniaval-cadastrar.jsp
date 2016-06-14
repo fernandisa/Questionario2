@@ -1,5 +1,31 @@
+<%@page import="modelo.Monitor"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.MonitorDAO"%>
+<%@page import="modelo.MoniAval"%>
+<%@page import="dao.MoniAvalDAO"%>
 <%@include file="../cabecalho.jsp"%>
+<%
+    if (request.getParameter("IdMoniaval") == null)
+    {
+        response.sendRedirect("moniaval.jsp");
+        return;
+    }
 
+    Long idMoniaval = Long.parseLong(request.getParameter("IdMoniaval"));
+    MoniAvalDAO dao = new MoniAvalDAO();
+    MoniAval obj = dao.buscarPorChavePrimaria(idMoniaval);
+
+    if (obj == null)
+    {
+        response.sendRedirect("moniaval.jsp");
+        return;
+
+    }
+    
+    MonitorDAO mdao = new MonitorDAO();
+    List<Monitor> lista = mdao.listar();
+
+%>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
@@ -12,8 +38,30 @@
 <!--            NÃO PRECISA CADASTRAR O ID DA CATEGORIA, NÃO É NECESSÁRIO -->
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtID" />
-                        <label class="mdl-textfield__label" for="txtID">Código do Monitor</label>
+                        <input class="mdl-textfield__input" type="text" required  name="txtIdMoniaval" />
+                        <label class="mdl-textfield__label" for="txtIdMoniaval">ID da Avaliação do Monitor</label>
+                    </div>
+                </div>
+
+
+                <div class="mdl-cell--12-col">
+                    <div class="mdl-select mdl-js-select mdl-select--floating-label">
+                        <select class="mdl-select__input" id="selProfessor" name="selMonitor" value="<%=obj.getIdMonitor()%>">
+                        <option value="">Selecione a resposta</option>
+                            <%                         
+                               String selected = "";    
+                               for (Monitor item : lista) {
+                               if(item.getMonNome()== obj.getIdMonitor().getMonNome())
+                               {
+                               selected = "selected";
+                               }
+                            %>
+                        <option value="<%=item.getMonNome()%>" <%=selected%>><%=item%></option>
+                            <%
+                            selected = "";
+                             }
+                            %>
+                        </select>
                     </div>
                 </div>
                 

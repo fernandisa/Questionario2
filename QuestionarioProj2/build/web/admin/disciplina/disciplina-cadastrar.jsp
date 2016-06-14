@@ -1,9 +1,18 @@
+<%@page import="dao.MonitorDAO"%>
+<%@page import="dao.ProfessorDAO"%>
 <%@page import="modelo.Monitor"%>
 <%@page import="modelo.Professor"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Curso"%>
 <%@page import="dao.CursoDAO"%>
+<%@include file="../cabecalho.jsp"%>
 <%
+    if (request.getParameter("IdDisciplina") == null)
+    {
+        response.sendRedirect("list.jsp");
+        return;
+    }
+
     CursoDAO cDAO = new CursoDAO();
     List<Curso> cList = cDAO.listar();
     // fazer a dao professor para pegar o método listar
