@@ -230,7 +230,7 @@ public class ProfAval implements Serializable {
 
     @Override
     public String toString() {
-         return idProfaval + "-" + paPeriodo;
+        return idProfaval + "-" + paPeriodo;
     }
-    
+
 }
