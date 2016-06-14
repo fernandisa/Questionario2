@@ -20,7 +20,7 @@
 <div>
     <h1 class="centro">Atualização de Avaliação de Monitores</h1>
     <form action="moniaval-atualizar-ok.jsp" method="post">
-        <label>Código:</label><input type="text" name="txtIdMoniaval" value="<%=obj.getIdMoniaval()%>" /><br />
+        <label>Código:</label><input type="text" name="txtID" value="<%=obj.getIdMoniaval()%>" /><br />
         <label>Código do Monitor:</label><input type="text" name="txtIdMonitor" value="<%=obj.getIdMonitor()%>" /><br />
         <label>Código do questionário:</label><input type="text" name="txtIdQuestionario" value="<%=obj.getIdQuestionario()%>" /><br />
         <label>Período:</label><input type="text" name="txtmaPeriodo" value="<%=obj.getMaPeriodo()%>" /><br />

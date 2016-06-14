@@ -2,18 +2,14 @@
 <%@page import="dao.MonitorDAO"%>
 <%@page import="java.util.List"%>
 <%@include file="../cabecalho.jsp"%>
-<%
-    MonitorDAO dao = new MonitorDAO();
+<%    MonitorDAO dao = new MonitorDAO();
 
     List<Monitor> lista;
 
-    if (request.getParameter("txtFiltro") != null && request.getParameter("txtFiltro") != "")
-    {
+    if (request.getParameter("txtFiltro") != null && request.getParameter("txtFiltro") != "") {
         String txtFiltro = request.getParameter("txtFiltro");
         lista = dao.listar(txtFiltro);
-    }
-    else
-    {
+    } else {
         lista = dao.listar();
     }
 
@@ -21,11 +17,11 @@
 <!-- gambiarra pra alinhar o botão a esquerda-->
 <style>
     .direita
-            {
-                text-align: right;
-                padding-right: 10%;
-                
-            }
+    {
+        text-align: right;
+        padding-right: 10%;
+
+    }
 </style>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -35,7 +31,7 @@
             <div class="direita">
                 <a href="add.jsp">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                         <i class="material-icons">add</i>
+                        <i class="material-icons">add</i>
                     </button>  
                 </a>
             </div>
@@ -50,8 +46,8 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <%
-                   for (Monitor item : lista) {
+                <%              
+                    for (Monitor item : lista) {
                 %>
                 <tbody>
                     <tr>
@@ -77,11 +73,11 @@
                             <div class="mdl-tooltip" for="ttdel">
                                 Excluir
                             </div>
-                            
+
                         </td>
-                
+
                     </tr>
-                  
+
                 </tbody>
                 <%
                     }

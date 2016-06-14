@@ -4,7 +4,7 @@
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
 <%
-    Long idMoniaval = Long.parseLong(request.getParameter("txtIdMoniaval"));
+    Long idMoniaval = Long.parseLong(request.getParameter("txtID"));
     Long idMonitor = Long.parseLong(request.getParameter("txtIdMonitor"));
     Long idQuestionario = Long.parseLong(request.getParameter("txtIdQuestionario"));
     String maPeriodo = request.getParameter("txtMaPeriodo");
