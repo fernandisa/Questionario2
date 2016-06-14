@@ -1,28 +1,24 @@
 <%@page import="modelo.Questionario"%>
 <%@page import="dao.QuestionarioDAO"%>
-<%
-    if(request.getParameter("idQuestionario") == null )
-    {
-      response.sendRedirect("questionario.jsp"); 
-      //para a execução aqui
-      return;
+<%@include file="../cabecalho.jsp"%>
+<%    if (request.getParameter("IdQuestionario") == null) {
+        response.sendRedirect("questionario.jsp");
+        //para a execução aqui
+        return;
     }
-    
-    Long idQuestionario = Long.parseLong(request.getParameter("idQuestionario"));
+
+    Long idQuestionario = Long.parseLong(request.getParameter("IdQuestionario"));
     QuestionarioDAO dao = new QuestionarioDAO();
     Questionario obj = dao.buscarPorChavePrimaria(idQuestionario);
-    
+
     String msg = "";
-    if(obj != null)
-    {
+    if (obj != null) {
         dao.excluir(obj);
         msg = "Registro excluído com sucesso";
+    } else {
+        msg = "Erro ao excluir o registro";
     }
-    else
-    {
-        msg = "Erro ao excluir o registro"; 
-    }
-    
+
 %>
 <h1 class="centro">Exclusão de Questionários</h1>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">

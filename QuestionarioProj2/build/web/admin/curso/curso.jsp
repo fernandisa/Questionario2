@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="modelo.Curso"%>
 <%@page import="dao.CursoDAO"%>
+<%@include file="../cabecalho.jsp"%>
 <%
     CursoDAO dao = new CursoDAO();
     List<Curso> lista = dao.listar();
@@ -44,8 +45,7 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <%
-                    for (Curso obj : lista) {
+                <%                    for (Curso obj : lista) {
                 %>
                 <tbody>
                     <tr>
@@ -83,10 +83,10 @@
                 %>
             </table>
 
-           
+
         </div>
     </div>
-            
+
 </section>   
 
 <%@include file="../rodape.jsp"%>

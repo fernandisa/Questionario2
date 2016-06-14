@@ -3,9 +3,9 @@
 <%@page import="modelo.Monitor"%>
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
-<%
-    String msg = "";
-    if (request.getParameter("txtID") == null || request.getParameter("txtID") == null
+<%@include file="../cabecalho.jsp"%>
+<%    String msg = "";
+    if (request.getParameter("txtIdMoniAval") == null || request.getParameter("selMonitor") == null
             || request.getParameter("txtIdQuestionario") == null || request.getParameter("txtMaPeriodo")
             == null || request.getParameter("txtMaResposta1") == null
             || request.getParameter("txtMaResposta2") == null || request.getParameter("txtMaResposta3") == null
@@ -16,8 +16,8 @@
             || request.getParameter("txtMaResposta10") == null) {
         response.sendRedirect("moniaval.jsp");
     } else {
-        Long idMoniaval = Long.parseLong(request.getParameter("txtID"));
-        Long idMonitor = Long.parseLong(request.getParameter("txtID"));
+        Long idMoniaval = Long.parseLong(request.getParameter("txtIdMoniaval"));
+        Long idMonitor = Long.parseLong(request.getParameter("selMonitor"));
         Long idQuestionario = Long.parseLong(request.getParameter("txtIdQuestionario"));
         String maPeriodo = request.getParameter("txtMaPeriodo");
         BigInteger maResposta1 = new BigInteger(request.getParameter("txtMaResposta1"));
@@ -62,9 +62,9 @@
         }
 
     }
-    String idMoniaval = request.getParameter("txtID");
-    String idMonitor = request.getParameter("txtID");
-    String idQuestionario = request.getParameter("txtIdQuestionario");
+    String idMoniaval = request.getParameter("txtIdMoniAval");
+    String selMonitor = request.getParameter("selMonitor");
+    String selQuestionario = request.getParameter("selQuestionario");
     String maPeriodo = request.getParameter("txtMaPeriodo");
     String maResposta1 = request.getParameter("txtMaResposta1");
     String maResposta2 = request.getParameter("txtMaResposta2");
@@ -82,8 +82,8 @@
         <div class="mdl-card__supporting-text ">
             <%=msg%>.<br />
             Código da avaliação do monitor: <%=idMoniaval%><br />
-            Código do monitor: <%=idMonitor%><br />
-            Código do Questionário: <%=idQuestionario%><br />
+            Código do monitor: <%=selMonitor%><br />
+            Código do Questionário: <%=selQuestionario%><br />
             Período: <%=maPeriodo%><br />
             Resposta1: <%=maResposta1%><br />
             Resposta2: <%=maResposta2%><br />

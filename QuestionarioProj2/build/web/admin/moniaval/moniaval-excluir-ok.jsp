@@ -1,28 +1,24 @@
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
-<%
-    if(request.getParameter("idMoniaval") == null )
-    {
-      response.sendRedirect("moniaval.jsp"); 
-      //para a execução aqui
-      return;
+<%@include file="../cabecalho.jsp"%>
+<%    if (request.getParameter("IdMoniAval") == null) {
+        response.sendRedirect("moniaval.jsp");
+        //para a execução aqui
+        return;
     }
-    
-    Long idMoniaval = Long.parseLong(request.getParameter("idMoniaval"));
+
+    Long idMoniaval = Long.parseLong(request.getParameter("IdMoniAval"));
     MoniAvalDAO dao = new MoniAvalDAO();
     MoniAval obj = dao.buscarPorChavePrimaria(idMoniaval);
-    
+
     String msg = "";
-    if(obj != null)
-    {
+    if (obj != null) {
         dao.excluir(obj);
         msg = "Registro excluído com sucesso";
+    } else {
+        msg = "Erro ao excluir o registro";
     }
-    else
-    {
-        msg = "Erro ao excluir o registro"; 
-    }
-    
+
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">

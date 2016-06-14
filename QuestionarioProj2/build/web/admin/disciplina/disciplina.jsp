@@ -1,8 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="modelo.Disciplina"%>
 <%@page import="dao.DisciplinaDAO"%>
-<%
-    DisciplinaDAO dao = new DisciplinaDAO();
+<%@include file="../cabecalho.jsp"%>
+<%    DisciplinaDAO dao = new DisciplinaDAO();
     List<Disciplina> lista = dao.listar();
 
     if (request.getParameter("txtFiltro") != null && request.getParameter("txtFiltro") != "") {
@@ -27,7 +27,7 @@
             <h4>Disciplinas</h4>
             <!-- Colored mini FAB button -->
             <div class="direita">
-                <a href="disciplina-cadastar.jsp">
+                <a href="disciplina-cadastrar.jsp">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                         <i class="material-icons">Cadastar</i>
                     </button>  
@@ -53,13 +53,13 @@
                         <td><%=obj.getIdDisciplina()%></td>
                         <td><%=obj.getDiscNome()%></td>
                         <td><%=obj.getIdCurso()%></td>
-                        <td><%=obj.getIdProfessor()%></td> <%--trocar o getId no professor e colocar o nome junto para aparecer na tela --%>
+                        <td><%=obj.getIdProfessor()%></td> 
                         <td>
                             <!-- 
                                 Atualizar 
                             -->
                             <div id="ttupd" class="icon material-icons">
-                                <i class="material-icons"><a href="disciplina-atualizar.jsp?IdDisciplina=<%=obj.getIdDisciplina()%>">Editar</a></i>
+                                <i class="material-icons"><a href="disciplina-atualizar.jsp?idDisciplina=<%=obj.getIdDisciplina()%>">Editar</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttupd">
                                 Atualizar
@@ -68,7 +68,7 @@
                                 Excluir 
                             -->
                             <div id="ttdel" class="icon material-icons">
-                                <i class="material-icons"><a href="disciplina-excluir-ok.jsp?IdDisciplina=<%=obj.getIdDisciplina()%>">Excluir</a></i>
+                                <i class="material-icons"><a href="disciplina-excluir-ok.jsp?idDisciplina=<%=obj.getIdDisciplina()%>">Excluir</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttdel">
                                 Excluir
@@ -88,5 +88,5 @@
         </div>
     </div>
 </section>
-            
+
 <%@include file="../rodape.jsp"%>

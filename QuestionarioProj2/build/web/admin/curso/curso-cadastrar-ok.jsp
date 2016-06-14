@@ -1,5 +1,6 @@
 <%@page import="modelo.Curso"%>
 <%@page import="dao.CursoDAO"%>
+<%@include file="../cabecalho.jsp"%>
 <%
     String msg = "";
 
@@ -35,12 +36,12 @@
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text ">
-             <%=msg%>.<br />
-             Código do Curso: <%=idCurso%><br />
-             Nome: <%=nome%><br />
-             Área: <%=cursoArea%><br />
+            <%=msg%>.<br />
+            Código do Curso: <%=idCurso%><br />
+            Nome: <%=nome%><br />
+            Área: <%=cursoArea%><br />
             <a href="curso.jsp"><i class="material-icons">Lista de cursos</i></a>
-            
+
         </div>
 
     </div>

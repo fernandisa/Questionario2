@@ -4,13 +4,14 @@
 <%@page import="modelo.Professor"%>
 <%@page import="modelo.Disciplina"%>
 <%@page import="dao.DisciplinaDAO"%>
-<%
-    String msg = "";
+<%@include file="../cabecalho.jsp"%>
 
-    if (request.getParameter("txtIdDisciplina") == null || request.getParameter("txtDiscNome") == null || request.getParameter("selcurso") == null || request.getParameter("txtArea") == null || request.getParameter("selmonitor") == null || request.getParameter("selprofessor") == null) {
+<%    String msg = "";
+
+    if (request.getParameter("txtidDisciplina") == null || request.getParameter("txtDiscNome") == null || request.getParameter("selcurso") == null || request.getParameter("txtArea") == null || request.getParameter("selmonitor") == null || request.getParameter("selprofessor") == null) {
         response.sendRedirect("disciplina.jsp");
     } else {
-        Long idDisciplina = Long.parseLong(request.getParameter("txtIdDisciplina"));
+        Long idDisciplina = Long.parseLong(request.getParameter("txtidDisciplina"));
         String discNome = request.getParameter("txtDiscNome");
         Long idCurso = Long.parseLong(request.getParameter("selcurso")); // Chave estrangeira
         Long idprofessor = Long.parseLong(request.getParameter("selprofessor"));
@@ -43,7 +44,7 @@
         }
 
     }
-    String idDisciplina = request.getParameter("txtIdDisciplina");
+    String idDisciplina = request.getParameter("txtidDisciplina");
     String discNome = request.getParameter("txtDiscNome");
     String idCurso = request.getParameter("selcurso"); // Chave estrangeira
     String idprofessor = request.getParameter("selprofessor");

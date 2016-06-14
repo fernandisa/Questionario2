@@ -1,8 +1,8 @@
 <%@page import="modelo.MoniAval"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.MoniAvalDAO"%>
-<%
-    MoniAvalDAO dao = new MoniAvalDAO();
+<%@include file="../cabecalho.jsp"%>
+<%    MoniAvalDAO dao = new MoniAvalDAO();
     List<MoniAval> lista = dao.listar();
 
     if (request.getParameter("txtFiltro") != null && request.getParameter("txtFiltro") != "") {
@@ -77,7 +77,7 @@
                                 Atualizar 
                             -->
                             <div id="ttupd" class="icon material-icons">
-                                <i class="material-icons"><a href="moniaval-atualizar.jsp?codigo=<%=obj.getIdMoniaval()%>">Editar</a></i>
+                                <i class="material-icons"><a href="moniaval-atualizar.jsp?IdMoniaval=<%=obj.getIdMoniaval()%>">Editar</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttupd">
                                 Atualizar
@@ -86,7 +86,7 @@
                                 Excluir 
                             -->
                             <div id="ttdel" class="icon material-icons">
-                                <i class="material-icons"><a href="moniaval-excluir-ok.jsp?codigo=<%=obj.getIdMoniaval()%>">Excluir</a></i>
+                                <i class="material-icons"><a href="moniaval-excluir-ok.jsp?IdMoniaval=<%=obj.getIdMoniaval()%>">Excluir</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttdel">
                                 Excluir

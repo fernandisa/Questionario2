@@ -5,28 +5,26 @@
 <%@page import="dao.MonitorDAO"%>
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
-<%
-    if(request.getParameter("idMoniAval") == null )
-    {
-      response.sendRedirect("moniaval.jsp"); 
-      //para a execução aqui
-      return;
+<%@include file="../cabecalho.jsp"%>
+<%    if (request.getParameter("IdMoniAval") == null) {
+        response.sendRedirect("moniaval.jsp");
+        //para a execução aqui
+        return;
     }
-    
-    Long idMoniaval = Long.parseLong(request.getParameter("idMoniaval"));
+
+    Long idMoniaval = Long.parseLong(request.getParameter("IdMoniaval"));
     MoniAvalDAO dao = new MoniAvalDAO();
     MoniAval obj = dao.buscarPorChavePrimaria(idMoniaval);
-    if(obj == null)
-    {
+    if (obj == null) {
         response.sendRedirect("moniaval.jsp");
     }
-    
+
     MonitorDAO mdao = new MonitorDAO();
     List<Monitor> mlista = mdao.listar();
 
     QuestionarioDAO qdao = new QuestionarioDAO();
     List<Questionario> qlista = qdao.listar();
-    
+
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -37,7 +35,7 @@
                     primeira div -- área que ocupará o campo de formulário
                     segunda div -- campo de texto e label 
                 -->
-<!--            NÃO PRECISA CADASTRAR O ID DA CATEGORIA, NÃO É NECESSÁRIO -->
+                <!--            NÃO PRECISA CADASTRAR O ID DA CATEGORIA, NÃO É NECESSÁRIO -->
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtIdMoniaval" value="<%=obj.getIdMoniaval()%>" readonly="readonly" /><br />
@@ -49,59 +47,57 @@
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
                         <select class="mdl-select__input" id="selMonitor" name="selMonitor" value="<%=obj.getIdMonitor()%>">
-                        <option value="">Selecione a resposta</option>
-                            <%                         
-                               String selected = "";    
-                               for (Monitor item : mlista) {
-                               if(item.getMonNome()== obj.getIdMonitor().getMonNome())
-                               {
-                               selected = "selected";
-                               }
-                            %>
-                        <option value="<%=item.getMonNome()%>" <%=selected%>><%=item%></option>
+                            <option value="">Selecione a resposta</option>
                             <%
-                            selected = "";
-                             }
+                                String selected = "";
+                                for (Monitor item : mlista) {
+                                    if (item.getMonNome() == obj.getIdMonitor().getMonNome()) {
+                                        selected = "selected";
+                                    }
+                            %>
+                            <option value="<%=item.getMonNome()%>" <%=selected%>><%=item%></option>
+                            <%
+                                    selected = "";
+                                }
                             %>
                         </select>
                     </div>
                 </div>
-                        
+
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
                         <select class="mdl-select__input" id="selQuestionario" name="selQuestionario" value="<%=obj.getIdQuestionario()%>">
-                        <option value="">Selecione a resposta</option>
-                            <%                         
-                               String selecte = "";    
-                               for (Questionario item : qlista) {
-                               if(item.getIdQuestionario()== obj.getIdQuestionario().getIdQuestionario())
-                               {
-                               selecte = "selecte";
-                               }
-                            %>
-                        <option value="<%=item.getIdQuestionario()%>" <%=selecte%>><%=item%></option>
+                            <option value="">Selecione a resposta</option>
                             <%
-                            selecte = "";
-                             }
+                                String selecte = "";
+                                for (Questionario item : qlista) {
+                                    if (item.getIdQuestionario() == obj.getIdQuestionario().getIdQuestionario()) {
+                                        selecte = "selecte";
+                                    }
+                            %>
+                            <option value="<%=item.getIdQuestionario()%>" <%=selecte%>><%=item%></option>
+                            <%
+                                    selecte = "";
+                                }
                             %>
                         </select>
                     </div>
                 </div>
-                        
+
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtMaPeriodo" value="<%=obj.getMaPeriodo()%>" /><br />
                         <label class="mdl-textfield__label" for="txtMaPeriodo">Período da Avaliação</label>
                     </div>
                 </div>
-       
+
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtMaResposta1" value="<%=obj.getMaResposta1()%>" /><br />
                         <label class="mdl-textfield__label" for="txtMaResposta1">Resposta 1</label>
                     </div>
                 </div>
-             
+
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtMaResposta2" value="<%=obj.getMaResposta2()%>" /><br />
@@ -164,17 +160,17 @@
                         <label class="mdl-textfield__label" for="txtMaResposta10">Resposta 10</label>
                     </div>
                 </div>
-   
-                
-              
+
+
+
                 <div class="mdl-cell--12-col">
-                    
+
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                    <i class="material-icons">save</i></button>
+                        <i class="material-icons">save</i></button>
                     <button type="reset" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                    <i class="material-icons">clear</i></button>
-                    
-                    
+                        <i class="material-icons">clear</i></button>
+
+
                 </div>
             </form>
         </div>
