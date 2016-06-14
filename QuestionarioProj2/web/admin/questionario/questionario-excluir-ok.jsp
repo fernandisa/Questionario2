@@ -24,7 +24,7 @@
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text ">
             <%=msg%><br />
-            <a href="questionario.jsp"><i class="material-icons">Voltar</i></a>
+            <a href="questionario.jsp"><i class="material-icons">list</i></a>
         </div>
     </div>
 </section>
