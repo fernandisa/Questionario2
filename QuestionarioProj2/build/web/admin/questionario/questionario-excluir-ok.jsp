@@ -25,10 +25,14 @@
     
 %>
 <h1 class="centro">Exclusão de Questionários</h1>
-            
-         <div>
-             <%=msg%>.<br />
-             <a href="questionario.jsp">Voltar para Listagem</a>
-         </div>
-    </body>
-</html>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__supporting-text ">
+            <%=msg%><br />
+            <a href="questionario.jsp"><i class="material-icons">Voltar</i></a>
+        </div>
+    </div>
+</section>
+
+<%@include file="../rodape.jsp"%>
+
