@@ -230,7 +230,7 @@ public class ProfAval implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.ProfAval[ idProfaval=" + idProfaval + " ]";
+         return idProfaval + "-" + paPeriodo;
     }
     
 }
