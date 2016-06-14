@@ -1,5 +1,15 @@
+<%@page import="modelo.ProfAval"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.ProfessorDAO"%>
+<%@page import="modelo.Professor"%>
 <%@include file="../cabecalho.jsp"%>
-
+<%
+    ProfAval obj = new ProfAval();
+    Professor prof = new Professor();
+    ProfessorDAO pDAO = new ProfessorDAO();
+    List<Professor> pList = pDAO.listar();
+    
+%>
 
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -31,27 +41,21 @@
                     </div>
                 </div>
                 
-<!--                <div class="mdl-cell--12-col">
+             <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selProfessor" name="selProfessor" value="<//%=pa.getProfessor()%>">
-                        <option value="">Selecione a resposta</option>
-                            <//%                         
-                              /* String selected = "";    
-                              * for (Professor item : lista) {
-                              * if(item.getProfNome()== pa.getProfessor().getProfNome())
-                              * {
-                              * selected = "selected";
-                              * } ;*/
-                            %>
-                        <option value="<//%=item.getProfNome()%>" <//%=selected%>><//%=item%></option>
-                            <//%
-                            selected = "";
-                             }    
-                            %>
+                        <select class="mdl-select__input" id="selprofessor" name="selprofessor" value="<%=obj.getProfessor()%>">
+                            <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                for (Professor p : pList) {
+                %>
+                    <option value="<%=p.getIdProfessor()%>"><%=p%></option>
+                <%
+                }
+                %>
                         </select>
                     </div>
-                </div>-->
-
+                </div>
                 <div class="mdl-cell--12-col">
                     
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
