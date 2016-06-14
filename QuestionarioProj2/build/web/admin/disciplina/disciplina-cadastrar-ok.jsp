@@ -8,9 +8,7 @@
 
 <%    String msg = "";
 
-    if (request.getParameter("txtidDisciplina") == null || request.getParameter("txtDiscNome") == null || request.getParameter("selcurso") == null || request.getParameter("txtArea") == null || request.getParameter("selmonitor") == null || request.getParameter("selprofessor") == null) {
-        response.sendRedirect("disciplina.jsp");
-    } else {
+   
         Long idDisciplina = Long.parseLong(request.getParameter("txtidDisciplina"));
         String discNome = request.getParameter("txtDiscNome");
         Long idCurso = Long.parseLong(request.getParameter("selcurso")); // Chave estrangeira
@@ -34,6 +32,11 @@
         obj.setArea(area);
         obj.setDiscNome(discNome);
         obj.setIdDisciplina(idDisciplina);
+        obj.setIdCurso(objCurso);
+        obj.setIdMonitor(objMon);
+        obj.setIdProfessor(objProf);
+        
+        
 
         try {
             dao.incluir(obj);
@@ -43,26 +46,26 @@
             msg = "Erro ao cadastrar disciplina";
         }
 
-    }
-    String idDisciplina = request.getParameter("txtidDisciplina");
-    String discNome = request.getParameter("txtDiscNome");
-    String idCurso = request.getParameter("selcurso"); // Chave estrangeira
-    String idprofessor = request.getParameter("selprofessor");
-    String area = request.getParameter("txtArea");
-    String idMonitor = request.getParameter("selmonitor");
+    
+    String idDisciplina1 = request.getParameter("txtidDisciplina");
+    String discNome1 = request.getParameter("txtDiscNome");
+    String idCurso1 = request.getParameter("selcurso"); // Chave estrangeira
+    String idprofessor1 = request.getParameter("selprofessor");
+    String area1 = request.getParameter("txtArea");
+    String idMonitor1 = request.getParameter("selmonitor");
 
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text ">
             <%=msg%>.<br />
-            Código da disciplina: <%=idDisciplina%><br />
-            Código do curso: <%=idCurso%><br />
-            Código do professor: <%=idprofessor%><br />
-            Código do monitor: <%=idMonitor%><br />
-            Nome: <%=discNome%><br />
-            Área: <%=area%><br />
-            <a href="disciplina.jsp"><i class="material-icons">Lista de disciplinas</i></a>
+            Código da disciplina: <%=idDisciplina1%><br />
+            Código do curso: <%=idCurso1%><br />
+            Código do professor: <%=idprofessor1%><br />
+            Código do monitor: <%=idMonitor1%><br />
+            Nome: <%=discNome1%><br />
+            Área: <%=area1%><br />
+            <a href="disciplina.jsp"><i class="material-icons">list</i></a>
 
         </div>
 

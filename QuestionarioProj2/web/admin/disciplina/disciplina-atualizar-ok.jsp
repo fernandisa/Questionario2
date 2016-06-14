@@ -5,7 +5,8 @@
 <%@page import="modelo.Disciplina"%>
 <%@page import="dao.DisciplinaDAO"%>
 <%@include file="../cabecalho.jsp"%>
-<%    Long idDisciplina = Long.parseLong(request.getParameter("txtidDisciplina"));
+<%    
+    Long idDisciplina = Long.parseLong(request.getParameter("txtidDisciplina"));
     String discNome = request.getParameter("txtDiscNome");
     Long idCurso = Long.parseLong(request.getParameter("selcurso")); // Chave estrangeira
     Long idprofessor = Long.parseLong(request.getParameter("selprofessor"));
@@ -13,7 +14,7 @@
     Long idMonitor = Long.parseLong(request.getParameter("selmonitor"));
 
     DisciplinaDAO dao = new DisciplinaDAO();
-    Disciplina obj = new Disciplina();
+    Disciplina obj = dao.buscarPorChavePrimaria(idDisciplina);
 
     Professor objProf = new Professor();
     objProf.setIdProfessor(idprofessor);
@@ -28,6 +29,9 @@
     obj.setArea(area);
     obj.setDiscNome(discNome);
     obj.setIdDisciplina(idDisciplina);
+    obj.setIdCurso(objCurso);
+    obj.setIdMonitor(objMon);
+    obj.setIdProfessor(objProf);
 
     dao.alterar(obj);
 

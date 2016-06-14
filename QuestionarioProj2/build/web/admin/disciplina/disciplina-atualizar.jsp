@@ -8,6 +8,7 @@
 <%@page import="modelo.Disciplina"%>
 <%@page import="dao.DisciplinaDAO"%>
 <%@include file="../cabecalho.jsp"%>
+
 <%    if (request.getParameter("idDisciplina") == null) {
         response.sendRedirect("disciplina.jsp");
         //para a execução aqui
@@ -40,14 +41,14 @@
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
             <h4>Disciplina - Cadastrar</h4>
-            <form action="disciplina-cadastrar-ok.jsp" method="post">
+            <form action="disciplina-atualizar-ok.jsp" method="post">
                 <!-- 
                     primeira div -- área que ocupará o campo de formulário
                     segunda div -- campo de texto e label 
                 -->
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtidDisciplina" value="<%=obj.getIdDisciplina()%>" /><br />
+                        <input class="mdl-textfield__input" type="text" required  name="txtidDisciplina" value="<%=obj.getIdDisciplina()%>"  readonly/><br />
                         <label class="mdl-textfield__label" for="txtidDisciplina">Código</label>
                     </div>
                 </div>
@@ -68,60 +69,65 @@
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selcurso" name="selcurso" value="<%=obj.getIdCurso()%>">
-                            <option value="">Selecione a resposta</option>
-                            <%
-                                String selected = "";
-                                for (Curso item : cList) {
-                                    if (item.getNome() == obj.getIdCurso().getNome()) {
-                                        selected = "selected";
-                                    }
-                            %>
-                            <option value="<%=item.getNome()%>" <%=selected%>><%=item%></option>
-                            <%
-                                    selected = "";
-                                }
-                            %>
+                        <select class="mdl-select__input" id="selcurso" name="selcurso" value="">
+                            <option value="">Selecione</option>
+                <%                            //percorrer minha lista de cursos
+                String selected = "";    
+                for (Curso c : cList) {
+                     if(c.getIdCurso()== obj.getIdCurso().getIdCurso())
+                     {
+                         selected = "selected";
+                     }
+                %>
+                <option value="<%=c.getIdCurso()%>" <%=selected%>><%=c%></option>
+                <%
+                    selected = "";
+                    }
+                %>
                         </select>
                     </div>
                 </div>
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selprofessor" name="selprofessor" value="<%=obj.getIdProfessor()%>">
-                            <option value="">Selecione a resposta</option>
-                            <%
-                                String selecte = "";
-                                for (Professor item : pList) {
-                                    if (item.getProfNome() == obj.getIdProfessor().getProfNome()) {
-                                        selecte = "selecte";
-                                    }
-                            %>
-                            <option value="<%=item.getProfNome()%>" <%=selecte%>><%=item%></option>
-                            <%
-                                    selecte = "";
-                                }
-                            %>
+                        <select class="mdl-select__input" id="selprofessor" name="selprofessor" value="">
+                            <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                selected = "";
+                for (Professor p : pList) {
+                    if(p.getIdProfessor()== obj.getIdProfessor().getIdProfessor())
+                     {
+                         selected = "selected";
+                     }
+                %>
+                    <option value="<%=p.getIdProfessor()%>" <%=selected%>><%=p%></option>
+                <%
+                selected = "";
+                }
+                %>
                         </select>
                     </div>
                 </div>
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selmonitor" name="selmonitor" value="<%=obj.getIdMonitor()%>">
-                            <option value="">Selecione a resposta</option>
-                            <%
-                                String select = "";
-                                for (Monitor item : mList) {
-                                    if (item.getMonNome() == obj.getIdMonitor().getMonNome()) {
-                                        select = "select";
-                                    }
-                            %>
-                            <option value="<%=item.getMonNome()%>" <%=select%>><%=item%></option>
-                            <%
-                                    select = "";
-                                }
-                            %>
+                        <select class="mdl-select__input" id="selmonitor" name="selmonitor" value="">
+                            <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                selected = "";
+                for (Monitor m : mList) {
+                    if(m.getIdMonitor()== obj.getIdMonitor().getIdMonitor())
+                     {
+                         selected = "selected";
+                     }
+                %>
+                    <option value="<%=m.getIdMonitor()%>" <%=selected%>><%=m%></option>
+                <%
+                selected = "";
+                }
+                %>
                         </select>
                     </div>
                 </div>
