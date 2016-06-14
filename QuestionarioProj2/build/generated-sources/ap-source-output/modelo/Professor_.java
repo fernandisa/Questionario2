@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import modelo.Disciplina;
 import modelo.ProfAval;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-06-14T09:05:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-06-14T13:56:44")
 @StaticMetamodel(Professor.class)
 public class Professor_ { 
 

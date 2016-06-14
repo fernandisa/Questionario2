@@ -109,7 +109,7 @@ public class Curso implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Curso[ idCurso=" + idCurso + " ]";
+         return idCurso + "-" + nome;
     }
     
 }

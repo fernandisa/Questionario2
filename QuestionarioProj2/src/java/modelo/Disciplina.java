@@ -131,7 +131,7 @@ public class Disciplina implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Disciplina[ idDisciplina=" + idDisciplina + " ]";
+        return idDisciplina + "-" + discNome;
     }
     
 }
