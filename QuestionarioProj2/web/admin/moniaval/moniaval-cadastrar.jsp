@@ -6,26 +6,14 @@
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
 <%@include file="../cabecalho.jsp"%>
-<%    if (request.getParameter("IdMoniaval") == null) {
-        response.sendRedirect("moniaval.jsp");
-        return;
-    }
+<%    
+    MoniAval obj = new MoniAval();
+    
+    MonitorDAO mDAO = new MonitorDAO();
+    List<Monitor> mList = mDAO.listar();
 
-    Long idMoniaval = Long.parseLong(request.getParameter("IdMoniaval"));
-    MoniAvalDAO dao = new MoniAvalDAO();
-    MoniAval obj = dao.buscarPorChavePrimaria(idMoniaval);
-
-    if (obj == null) {
-        response.sendRedirect("moniaval.jsp");
-        return;
-
-    }
-
-    MonitorDAO mdao = new MonitorDAO();
-    List<Monitor> mlista = mdao.listar();
-
-    QuestionarioDAO qdao = new QuestionarioDAO();
-    List<Questionario> qlista = qdao.listar();
+    QuestionarioDAO qDAO = new QuestionarioDAO();
+    List<Questionario> qList = qDAO.listar();
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -47,40 +35,32 @@
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selMonitor" name="selMonitor" value="<%=obj.getIdMonitor()%>">
-                            <option value="">Selecione a resposta</option>
-                            <%
-                                String selected = "";
-                                for (Monitor item : mlista) {
-                                    if (item.getMonNome() == obj.getIdMonitor().getMonNome()) {
-                                        selected = "selected";
-                                    }
-                            %>
-                            <option value="<%=item.getMonNome()%>" <%=selected%>><%=item%></option>
-                            <%
-                                    selected = "";
-                                }
-                            %>
+                        <select class="mdl-select__input" id="selmonitor" name="selmonitor" value="<%=obj.getIdMonitor()%>">
+                            <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                for (Monitor m : mList) {
+                %>
+                    <option value="<%=m.getIdMonitor()%>"><%=m%></option>
+                <%
+                }
+                %>
                         </select>
                     </div>
                 </div>
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selQuestionario" name="selQuestionario" value="<%=obj.getIdQuestionario()%>">
-                            <option value="">Selecione a resposta</option>
-                            <%
-                                String selecte = "";
-                                for (Questionario item : qlista) {
-                                    if (item.getIdQuestionario() == obj.getIdQuestionario().getIdQuestionario()) {
-                                        selecte = "selecte";
-                                    }
-                            %>
-                            <option value="<%=item.getIdQuestionario()%>" <%=selecte%>><%=item%></option>
-                            <%
-                                    selecte = "";
-                                }
-                            %>
+                        <select class="mdl-select__input" id="selQuestionario" name="selQuestionario" value="<%obj.getIdQuestionario()%>">
+                            <option value="">Selecione</option>
+                <%
+                //percorrer minha lista de profs
+                for (Questionario q : qList) {
+                %>
+                    <option value="<%=q.getIdQuestionario()%>"><%=q%></option>
+                <%
+                }
+                %>
                         </select>
                     </div>
                 </div>

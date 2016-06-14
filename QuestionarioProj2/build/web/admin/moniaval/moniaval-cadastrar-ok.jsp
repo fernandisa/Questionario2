@@ -5,17 +5,7 @@
 <%@page import="dao.MoniAvalDAO"%>
 <%@include file="../cabecalho.jsp"%>
 <%    String msg = "";
-    if (request.getParameter("txtIdMoniAval") == null || request.getParameter("selMonitor") == null
-            || request.getParameter("txtIdQuestionario") == null || request.getParameter("txtMaPeriodo")
-            == null || request.getParameter("txtMaResposta1") == null
-            || request.getParameter("txtMaResposta2") == null || request.getParameter("txtMaResposta3") == null
-            || request.getParameter("txtMaResposta4") == null || request.getParameter("txtMaResposta5")
-            == null || request.getParameter("txtMaResposta6") == null
-            || request.getParameter("txtMaResposta7") == null || request.getParameter("txtMaResposta8")
-            == null || request.getParameter("txtMaResposta9") == null
-            || request.getParameter("txtMaResposta10") == null) {
-        response.sendRedirect("moniaval.jsp");
-    } else {
+   
         Long idMoniaval = Long.parseLong(request.getParameter("txtIdMoniaval"));
         Long idMonitor = Long.parseLong(request.getParameter("selMonitor"));
         Long idQuestionario = Long.parseLong(request.getParameter("txtIdQuestionario"));
@@ -30,7 +20,13 @@
         BigInteger maResposta8 = new BigInteger(request.getParameter("txtMaResposta8"));
         BigInteger maResposta9 = new BigInteger(request.getParameter("txtMaResposta9"));
         BigInteger maResposta10 = new BigInteger(request.getParameter("txtMaResposta10"));
+        
+        Questionario objQues = new Questionario();
+        objQues.setIdQuestionario(idQuestionario);
 
+        Monitor objMon = new Monitor();
+        objMon.setIdMonitor(idMonitor);
+        
         MoniAvalDAO dao = new MoniAvalDAO();
         MoniAval obj = new MoniAval();
 
@@ -46,12 +42,9 @@
         obj.setMaResposta8(maResposta8);
         obj.setMaResposta9(maResposta9);
         obj.setMaResposta10(maResposta10);
-
-        Questionario objQues = new Questionario();
-        objQues.setIdQuestionario(idQuestionario);
-
-        Monitor objMon = new Monitor();
-        objMon.setIdMonitor(idMonitor);
+        obj.setIdMonitor(objMon);
+        obj.setIdQuestionario(objQues);
+        
 
         try {
             dao.incluir(obj);
@@ -61,40 +54,23 @@
             msg = "Erro ao cadastrar avaliação";
         }
 
-    }
-    String idMoniaval = request.getParameter("txtIdMoniAval");
-    String selMonitor = request.getParameter("selMonitor");
-    String selQuestionario = request.getParameter("selQuestionario");
-    String maPeriodo = request.getParameter("txtMaPeriodo");
-    String maResposta1 = request.getParameter("txtMaResposta1");
-    String maResposta2 = request.getParameter("txtMaResposta2");
-    String maResposta3 = request.getParameter("txtMaResposta3");
-    String maResposta4 = request.getParameter("txtMaResposta4");
-    String maResposta5 = request.getParameter("txtMaResposta5");
-    String maResposta6 = request.getParameter("txtMaResposta6");
-    String maResposta7 = request.getParameter("txtMaResposta7");
-    String maResposta8 = request.getParameter("txtMaResposta8");
-    String maResposta9 = request.getParameter("txtMaResposta9");
-    String maResposta10 = request.getParameter("txtMaResposta10");
+    
+    String idMoniaval1 = request.getParameter("txtIdMoniAval");
+    String selMonitor1 = request.getParameter("selMonitor");
+    String selQuestionario1 = request.getParameter("selQuestionario");
+    String maPeriodo1 = request.getParameter("txtMaPeriodo");
+    
+    
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text ">
-            <%=msg%>.<br />
-            Código da avaliação do monitor: <%=idMoniaval%><br />
-            Código do monitor: <%=selMonitor%><br />
-            Código do Questionário: <%=selQuestionario%><br />
-            Período: <%=maPeriodo%><br />
-            Resposta1: <%=maResposta1%><br />
-            Resposta2: <%=maResposta2%><br />
-            Resposta3: <%=maResposta3%><br />
-            Resposta4: <%=maResposta4%><br />
-            Resposta5: <%=maResposta5%><br />
-            Resposta6: <%=maResposta6%><br />
-            Resposta7: <%=maResposta7%><br />
-            Resposta8: <%=maResposta8%><br />
-            Resposta9: <%=maResposta9%><br />
-            Resposta10: <%=maResposta10%><br />
+             <%=msg%>.<br />
+            Código da avaliação do monitor: <%=idMoniaval1%><br />
+            Código do monitor: <%=selMonitor1%><br />
+            Código do Questionário: <%=selQuestionario1%><br />
+            Período: <%=maPeriodo1%><br />
+          
             <a href="moniaval.jsp"><i class="material-icons">Lista de avaliação de monitores</i></a>
         </div>
 
