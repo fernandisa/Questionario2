@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import modelo.Monitor;
 import modelo.Questionario;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-06-14T05:51:31")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-06-14T06:35:36")
 @StaticMetamodel(MoniAval.class)
 public class MoniAval_ { 
 

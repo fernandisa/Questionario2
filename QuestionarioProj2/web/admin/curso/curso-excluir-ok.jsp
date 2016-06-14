@@ -2,17 +2,16 @@
 <%@page import="dao.CursoDAO"%>
 <%@include file="../cabecalho.jsp"%>
 <%
-    if (request.getParameter("idCurso") == null) {
+    String msg = "";
+    if (request.getParameter("IdCurso") == null) {
         response.sendRedirect("curso.jsp");
         //para a execução aqui
-        return;
     }
 
-    Long idCurso = Long.parseLong(request.getParameter("idCurso"));
+    Long idCurso = Long.parseLong(request.getParameter("IdCurso"));
     CursoDAO dao = new CursoDAO();
     Curso obj = dao.buscarPorChavePrimaria(idCurso);
 
-    String msg = "";
     if (obj != null) {
         dao.excluir(obj);
         msg = "Registro excluído com sucesso";

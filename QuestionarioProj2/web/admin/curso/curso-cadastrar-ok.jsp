@@ -40,7 +40,7 @@
             Código do Curso: <%=idCurso%><br />
             Nome: <%=nome%><br />
             Área: <%=cursoArea%><br />
-            <a href="curso.jsp"><i class="material-icons">Lista de cursos</i></a>
+            <a href="curso.jsp"><i class="material-icons">list</i></a>
 
         </div>
 

@@ -4,7 +4,7 @@
 <%@include file="../cabecalho.jsp"%>
 <%
     CursoDAO dao = new CursoDAO();
-    List<Curso> lista = dao.listar();
+    List<Curso> lista;
 
     if (request.getParameter("txtFiltro") != null && request.getParameter("txtFiltro") != "") {
         String txtFiltro = request.getParameter("txtFiltro");
@@ -31,7 +31,7 @@
             <div class="direita">
                 <a href="curso-cadastrar.jsp">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                        <i class="material-icons">Cadastrar curso</i>
+                        <i class="material-icons">add</i>
                     </button>  
                 </a>
             </div>
@@ -58,7 +58,7 @@
                                 Atualizar 
                             -->
                             <div id="ttupd" class="icon material-icons">
-                                <i class="material-icons"><a href="curso-atualizar.jsp?IdCurso=<%=obj.getIdCurso()%>">Editar</a></i>
+                                <i class="material-icons"><a href="curso-atualizar.jsp?IdCurso=<%=obj.getIdCurso()%>">update</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttupd">
                                 Atualizar
@@ -67,7 +67,7 @@
                                 Excluir 
                             -->
                             <div id="ttdel" class="icon material-icons">
-                                <i class="material-icons"><a href="curso-excluir-ok.jsp?IdCurso=<%=obj.getIdCurso()%>">Excluir</a></i>
+                                <i class="material-icons"><a href="curso-excluir-ok.jsp?IdCurso=<%=obj.getIdCurso()%>">delete</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttdel">
                                 Excluir

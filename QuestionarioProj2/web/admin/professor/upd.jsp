@@ -1,9 +1,7 @@
 <%@include file="../cabecalho.jsp"%>
 <%@page import="dao.ProfessorDAO"%>
 <%@page import="modelo.Professor"%>
-<%
-    if (request.getParameter("IdProf") == null)
-    {
+<%    if (request.getParameter("IdProf") == null) {
         response.sendRedirect("list.jsp");
         return;
     }
@@ -12,8 +10,7 @@
     ProfessorDAO dao = new ProfessorDAO();
     Professor prof = dao.buscarPorChavePrimaria(idProfessor);
 
-    if (prof == null)
-    {
+    if (prof == null) {
         response.sendRedirect("list.jsp");
         return;
 
@@ -36,29 +33,29 @@
                         <label class="mdl-textfield__label" for="txtIdProf">ID de Professor</label>
                     </div>
                 </div>
-                
+
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtNmProfessor" value="<%=prof.getProfNome()%>" />
                         <label class="mdl-textfield__label" for="txtNmProfessor">Nome</label>
                     </div>
                 </div>
-                        
+
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" required  name="txtPeriodoProf" value="<%=prof.getProfPeriodo()%>" />
                         <label class="mdl-textfield__label" for="txtPeriodoProf">Período</label>
                     </div>
                 </div>        
-                
+
                 <div class="mdl-cell--12-col">
-                    
+
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                    <i class="material-icons">save</i></button>
+                        <i class="material-icons">save</i></button>
                     <button type="reset" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                    <i class="material-icons">clear</i></button>
-                    
-                    
+                        <i class="material-icons">clear</i></button>
+
+
                 </div>
             </form>
         </div>

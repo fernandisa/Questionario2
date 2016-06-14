@@ -1,20 +1,20 @@
+<%@include file="../cabecalho.jsp"%>
 <%@page import="modelo.Curso"%>
 <%@page import="dao.CursoDAO"%>
-<%@include file="../cabecalho.jsp"%>
-<%    if (request.getParameter("idCurso") == null) {
+<%    if (request.getParameter("IdCurso") == null) {
         response.sendRedirect("curso.jsp");
         //para a execução aqui
         return;
     }
 
-    Long idCurso = Long.parseLong(request.getParameter("idCurso"));
-    String nome = request.getParameter("txtNome");
-    String cursoArea = request.getParameter("txtCursoArea");
+    Long idCurso = Long.parseLong(request.getParameter("IdCurso"));
 
     CursoDAO dao = new CursoDAO();
     Curso obj = dao.buscarPorChavePrimaria(idCurso);
+
     if (obj == null) {
         response.sendRedirect("curso.jsp");
+        return;
     }
 
 %>
