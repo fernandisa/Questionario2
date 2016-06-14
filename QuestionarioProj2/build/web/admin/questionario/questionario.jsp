@@ -30,7 +30,7 @@
             <div class="direita">
                 <a href="questionario-cadastrar.jsp">
                     <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                        <i class="material-icons">Cadastrar</i>
+                        <i class="material-icons">add</i>
                     </button>  
                 </a>
             </div>
@@ -46,14 +46,11 @@
                         <th>Pergunta4</th>
                         <th>Pergunta5</th>
                         <th>Pergunta6</th>
-                        <th>Pergunta7</th>
-                        <th>Pergunta8</th>
-                        <th>Pergunta9</th>
-                        <th>Pergunta10</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <%                            for (Questionario obj : lista) {
+                <%                            
+                    for (Questionario obj : lista) {
                 %>
                 <tbody>
                     <tr>
@@ -65,17 +62,12 @@
                         <td><%=obj.getPergunta4()%></td>
                         <td><%=obj.getPergunta5()%></td>
                         <td><%=obj.getPergunta6()%></td>
-                        <td><%=obj.getPergunta7()%></td>
-                        <td><%=obj.getPergunta8()%></td>
-                        <td><%=obj.getPergunta9()%></td>
-                        <td><%=obj.getPergunta10()%></td>
-
                         <td>
                             <!-- 
                                 Atualizar 
                             -->
                             <div id="ttupd" class="icon material-icons">
-                                <i class="material-icons"><a href="questionario-atualizar.jsp?IdQuestionario=<%=obj.getIdQuestionario()%>">Editar</a></i>
+                                <i class="material-icons"><a href="questionario-atualizar.jsp?IdQuestionario=<%=obj.getIdQuestionario()%>">update</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttupd">
                                 Atualizar
@@ -84,7 +76,7 @@
                                 Excluir 
                             -->
                             <div id="ttdel" class="icon material-icons">
-                                <i class="material-icons"><a href="questionario-excluir-ok.jsp?IdQuestionario=<%=obj.getIdQuestionario()%>">Excluir</a></i>
+                                <i class="material-icons"><a href="questionario-excluir-ok.jsp?IdQuestionario=<%=obj.getIdQuestionario()%>">delete</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttdel">
                                 Excluir

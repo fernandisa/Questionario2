@@ -12,14 +12,15 @@
     Questionario obj = dao.buscarPorChavePrimaria(idQuestionario);
     if (obj == null) {
         response.sendRedirect("questionario.jsp");
+        return;
     }
 
 %>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
-            <h4>Questionário - Cadastrar</h4>
-            <form action="questionario-cadastrar-ok.jsp" method="post">
+            <h4>Questionário - Atualizar</h4>
+            <form action="questionario-atualizar-ok.jsp" method="post">
                 <!-- 
                     primeira div -- área que ocupará o campo de formulário
                     segunda div -- campo de texto e label 
@@ -104,7 +105,7 @@
 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtPergunta1"  value="<%=obj.getPergunta10()%>" /><br />
+                        <input class="mdl-textfield__input" type="text" required  name="txtPergunta10"  value="<%=obj.getPergunta10()%>" /><br />
                         <label class="mdl-textfield__label" for="txtPergunta1">Pergunta 10</label>
                     </div>
                 </div>

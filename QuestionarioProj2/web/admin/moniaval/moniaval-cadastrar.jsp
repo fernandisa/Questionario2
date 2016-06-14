@@ -35,7 +35,7 @@
 
                 <div class="mdl-cell--12-col">
                     <div class="mdl-select mdl-js-select mdl-select--floating-label">
-                        <select class="mdl-select__input" id="selmonitor" name="selmonitor" value="<%=obj.getIdMonitor()%>">
+                        <select class="mdl-select__input" id="selMonitor" name="selMonitor" value="<%=obj.getIdMonitor()%>">
                             <option value="">Selecione</option>
                 <%
                 //percorrer minha lista de profs

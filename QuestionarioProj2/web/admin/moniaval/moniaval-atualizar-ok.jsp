@@ -4,19 +4,8 @@
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
 <%@include file="../cabecalho.jsp"%>
-<%    if (request.getParameter("txtIdMoniAval") == null || request.getParameter("selMonitor") == null
-            || request.getParameter("txtIdQuestionario") == null || request.getParameter("txtMaPeriodo")
-            == null || request.getParameter("txtMaResposta1") == null
-            || request.getParameter("txtMaResposta2") == null || request.getParameter("txtMaResposta3") == null
-            || request.getParameter("txtMaResposta4") == null || request.getParameter("txtMaResposta5")
-            == null || request.getParameter("txtMaResposta6") == null
-            || request.getParameter("txtMaResposta7") == null || request.getParameter("txtMaResposta8")
-            == null || request.getParameter("txtMaResposta9") == null
-            || request.getParameter("txtMaResposta10") == null) {
-        response.sendRedirect("moniaval.jsp");
-        return;
-    }
-    Long idMoniaval = Long.parseLong(request.getParameter("txtIdMoniAval"));
+<%   
+    Long idMoniaval = Long.parseLong(request.getParameter("txtIdMoniaval"));
     Long idMonitor = Long.parseLong(request.getParameter("selMonitor"));
     Long idQuestionario = Long.parseLong(request.getParameter("selQuestionario"));
     String maPeriodo = request.getParameter("txtMaPeriodo");
@@ -34,10 +23,11 @@
     MoniAvalDAO dao = new MoniAvalDAO();
     MoniAval obj = dao.buscarPorChavePrimaria(idMoniaval);
 
-    if (obj == null) {
-        response.sendRedirect("moniaval.jsp");
-        return;
-    }
+   Questionario objQues = new Questionario();
+    objQues.setIdQuestionario(idQuestionario);
+
+    Monitor objMon = new Monitor();
+    objMon.setIdMonitor(idMonitor);
 
     obj.setIdMoniaval(idMoniaval);
     obj.setMaPeriodo(maPeriodo);
@@ -51,12 +41,10 @@
     obj.setMaResposta8(maResposta8);
     obj.setMaResposta9(maResposta9);
     obj.setMaResposta10(maResposta10);
+    obj.setIdQuestionario(objQues);
+    obj.setIdMonitor(objMon);
 
-    Questionario objQues = new Questionario();
-    objQues.setIdQuestionario(idQuestionario);
-
-    Monitor objMon = new Monitor();
-    objMon.setIdMonitor(idMonitor);
+    
 
     dao.alterar(obj);
 %>
@@ -65,7 +53,7 @@
         <div class="mdl-card__supporting-text ">
             <h4>Atualizar avaliação de monitores</h4>
             <p>Registro atualizado com sucesso.</p>
-            <a href="moniaval.jsp"><i class="material-icons">Lista de avaliação de monitores</i></a>    
+            <a href="moniaval.jsp"><i class="material-icons">list</i></a>    
         </div> 
         </body>
         </html>

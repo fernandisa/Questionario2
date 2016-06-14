@@ -41,7 +41,7 @@
         <div class="mdl-card__supporting-text ">
             <h4>Atualizar disciplina</h4>
             <p>Registro atualizado com sucesso.</p>
-            <a href="disciplina.jsp"><i class="material-icons">Lista de disciplinas</i></a>    
+            <a href="disciplina.jsp"><i class="material-icons">list</i></a>    
         </div> 
         </body>
         </html>

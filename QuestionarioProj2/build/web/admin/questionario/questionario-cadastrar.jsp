@@ -89,8 +89,8 @@
 
                 <div class="mdl-cell--12-col"> 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" required  name="txtPergunta1" />
-                        <label class="mdl-textfield__label" for="txtPergunta1">Pergunta 10</label>
+                        <input class="mdl-textfield__input" type="text" required  name="txtPergunta10" />
+                        <label class="mdl-textfield__label" for="txtPergunta10">Pergunta 10</label>
                     </div>
                 </div>
 

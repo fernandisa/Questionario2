@@ -6,7 +6,7 @@
 <%@page import="modelo.MoniAval"%>
 <%@page import="dao.MoniAvalDAO"%>
 <%@include file="../cabecalho.jsp"%>
-<%    if (request.getParameter("IdMoniAval") == null) {
+<%    if (request.getParameter("IdMoniaval") == null) {
         response.sendRedirect("moniaval.jsp");
         //para a execução aqui
         return;
@@ -29,8 +29,8 @@
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text">
-            <h4>Avaliação de Monitores - Cadastrar</h4>
-            <form action="moniaval-cadastrar-ok.jsp" method="post">
+            <h4>Avaliação de Monitores - Atualizar</h4>
+            <form action="moniaval-atualizar-ok.jsp" method="post">
                 <!-- 
                     primeira div -- área que ocupará o campo de formulário
                     segunda div -- campo de texto e label 
@@ -51,11 +51,11 @@
                             <%
                                 String selected = "";
                                 for (Monitor item : mlista) {
-                                    if (item.getMonNome() == obj.getIdMonitor().getMonNome()) {
+                                    if (item.getIdMonitor()== obj.getIdMonitor().getIdMonitor()) {
                                         selected = "selected";
                                     }
                             %>
-                            <option value="<%=item.getMonNome()%>" <%=selected%>><%=item%></option>
+                            <option value="<%=item.getIdMonitor()%>" <%=selected%>><%=item%></option>
                             <%
                                     selected = "";
                                 }

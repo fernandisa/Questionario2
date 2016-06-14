@@ -59,7 +59,7 @@
                                 Atualizar 
                             -->
                             <div id="ttupd" class="icon material-icons">
-                                <i class="material-icons"><a href="disciplina-atualizar.jsp?idDisciplina=<%=obj.getIdDisciplina()%>">Editar</a></i>
+                                <i class="material-icons"><a href="disciplina-atualizar.jsp?idDisciplina=<%=obj.getIdDisciplina()%>">update</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttupd">
                                 Atualizar
@@ -68,7 +68,7 @@
                                 Excluir 
                             -->
                             <div id="ttdel" class="icon material-icons">
-                                <i class="material-icons"><a href="disciplina-excluir-ok.jsp?idDisciplina=<%=obj.getIdDisciplina()%>">Excluir</a></i>
+                                <i class="material-icons"><a href="disciplina-excluir-ok.jsp?idDisciplina=<%=obj.getIdDisciplina()%>">delete</a></i>
                             </div>
                             <div class="mdl-tooltip" for="ttdel">
                                 Excluir

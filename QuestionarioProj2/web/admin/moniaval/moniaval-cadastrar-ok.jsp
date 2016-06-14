@@ -8,7 +8,7 @@
    
         Long idMoniaval = Long.parseLong(request.getParameter("txtIdMoniaval"));
         Long idMonitor = Long.parseLong(request.getParameter("selMonitor"));
-        Long idQuestionario = Long.parseLong(request.getParameter("txtIdQuestionario"));
+        Long idQuestionario = Long.parseLong(request.getParameter("selQuestionario"));
         String maPeriodo = request.getParameter("txtMaPeriodo");
         BigInteger maResposta1 = new BigInteger(request.getParameter("txtMaResposta1"));
         BigInteger maResposta2 = new BigInteger(request.getParameter("txtMaResposta2"));
@@ -71,7 +71,7 @@
             Código do Questionário: <%=selQuestionario1%><br />
             Período: <%=maPeriodo1%><br />
           
-            <a href="moniaval.jsp"><i class="material-icons">Lista de avaliação de monitores</i></a>
+            <a href="moniaval.jsp"><i class="material-icons">list</i></a>
         </div>
 
     </div>
