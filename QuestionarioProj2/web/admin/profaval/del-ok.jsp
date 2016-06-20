@@ -12,7 +12,6 @@
         Long idPA = Long.parseLong(request.getParameter("Idpa"));
         
         ProfAvalDAO dao = new ProfAvalDAO();
-
         ProfAval pa = dao.buscarPorChavePrimaria(idPA);
         if(pa!=null)
         {
@@ -38,4 +37,3 @@
 </section>
 
 <%@include file="../rodape.jsp"%>
-
