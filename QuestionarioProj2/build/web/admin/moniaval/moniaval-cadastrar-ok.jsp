@@ -55,7 +55,7 @@
         }
 
     
-    String idMoniaval1 = request.getParameter("txtIdMoniAval");
+    String idMoniaval1 = request.getParameter("txtIdMoniaval");
     String selMonitor1 = request.getParameter("selMonitor");
     String selQuestionario1 = request.getParameter("selQuestionario");
     String maPeriodo1 = request.getParameter("txtMaPeriodo");

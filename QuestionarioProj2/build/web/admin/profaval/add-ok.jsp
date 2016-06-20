@@ -74,8 +74,8 @@
     
     String idPA = request.getParameter("txtIdpa");
     String periodoPA = request.getParameter("txtPeriodoPA");
-    String selProfessor = request.getParameter("txtselProfessor");
-    String selQuestionario = request.getParameter("txtselQuestionario");
+    String selProfessor = request.getParameter("selProfessor");
+    String selQuestionario = request.getParameter("selQuestionario");
 %>
 
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
