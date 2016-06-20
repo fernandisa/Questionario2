@@ -11,10 +11,16 @@
     <class>modelo.Monitor</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
+        <!--
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/questionario"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="postgres"/>
+      -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/programa_questionario"/>
+      <property name="javax.persistence.jdbc.user" value="programatche"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="c010rad0*12"/>
     </properties>
   </persistence-unit>
 </persistence>
